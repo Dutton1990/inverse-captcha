@@ -1,21 +1,18 @@
 const inverseCaptcha = (nums) => {
   let sum = 0;
-  const matches = [];
 
-  if (nums[0] === nums[nums.length -1]) {
-      matches.push([nums[0], nums[-1]])
+  if (nums[0] === nums[nums.length - 1]) {
+    sum += nums[0];
   }
 
-  for (let i = 0; i < nums.length; i+=2) {
+  for (let i = 0; i < nums.length; i += 2) {
     if (nums[i] === nums[i + 1]) {
-      matches.push([nums[i], nums[i + 1]]);
-    } 
+      sum += nums[i];
+    }
     if (nums[i] === nums[i - 1]) {
-      matches.push([nums[i - 1], nums[i]]);
+      sum += nums[i - 1];
     }
   }
-
-  matches.forEach((num) => (sum += num[0]));
 
   return sum;
 };
